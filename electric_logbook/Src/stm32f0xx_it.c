@@ -37,7 +37,7 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN 0 */
-
+unsigned int SEGGER_SYSVIEW_TickCnt;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -83,11 +83,10 @@ void HardFault_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-
+  SEGGER_SYSVIEW_TickCnt++;
   /* USER CODE END SysTick_IRQn 0 */
   osSystickHandler();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-
   /* USER CODE END SysTick_IRQn 1 */
 }
 

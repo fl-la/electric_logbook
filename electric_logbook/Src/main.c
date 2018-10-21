@@ -57,6 +57,7 @@
 /* USER CODE BEGIN Includes */
 
 #include "stm32_adafruit_lcd.h"
+#include "SEGGER_SYSVIEW.h"
 
 /* USER CODE END Includes */
 
@@ -122,7 +123,10 @@ int main(void)
   MX_USART2_UART_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
+  
+  SEGGER_SYSVIEW_Conf();
 
+  
   //BSP_LCD_Init();
 
   xTaskCreate(alive_task,"alive", 50, NULL, 3 , NULL);

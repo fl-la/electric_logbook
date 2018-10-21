@@ -28,7 +28,9 @@
       build_intermediate_directory="electric_logbook/Obj"
       build_output_directory="electric_logbook/Exe"
       c_preprocessor_definitions="USE_FULL_ASSERT;__weak=__attribute__((weak)) ;__packed=__attribute__((__packed__)) ;USE_HAL_DRIVER;STM32F091xC"
-      c_user_include_directories="./../Inc;./../Drivers/STM32F0xx_HAL_Driver/Inc;./../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;./../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM0;./../Drivers/CMSIS/Device/ST/STM32F0xx/Include;./../Middlewares/Third_Party/FreeRTOS/Source/include;./../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;./../Drivers/CMSIS/Include"
+      c_user_include_directories="./../Inc;./../Drivers/STM32F0xx_HAL_Driver/Inc;./../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;./../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM0;./../Drivers/CMSIS/Device/ST/STM32F0xx/Include;./../Middlewares/Third_Party/FreeRTOS/Source/include;./../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;./../Drivers/CMSIS/Include;./../Lib;./../Middlewares/Third_Party/SEGGER_SysView;./../Middlewares/Third_Party/SEGGER_SysView/Config;./../Middlewares/Third_Party/SEGGER_SysView/SEGGER;./../Middlewares/Third_Party/SEGGER_SysView/OS"
+      cpp_enable_rtti="Yes"
+      debug_RTTCB="_SEGGER_RTT"
       gcc_c_language_standard="gnu11" />
     <folder Name="Application">
       <folder Name="EWARM">
@@ -83,6 +85,17 @@
         <file file_name="../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM0/port.c" />
         <file file_name="../Middlewares/Third_Party/FreeRTOS/Source/queue.c" />
       </folder>
+      <folder Name="SysView">
+        <file file_name="../Middlewares/Third_Party/SEGGER_SysView/SEGGER/SEGGER_RTT.c" />
+        <file file_name="../Middlewares/Third_Party/SEGGER_SysView/SEGGER/SEGGER_SYSVIEW.c" />
+        <file file_name="../Middlewares/Third_Party/SEGGER_SysView/Config/SEGGER_SYSVIEW_Config_FreeRTOS.c" />
+        <file file_name="../Middlewares/Third_Party/SEGGER_SysView/OS/SEGGER_SYSVIEW_FreeRTOS.c" />
+      </folder>
+    </folder>
+    <folder Name="Lib">
+      <file file_name="../Lib/stm32_adafruit_lcd.c" />
+      <file file_name="../Lib/stm32_adafruit_sd.c" />
+      <file file_name="../Lib/st7735.c" />
     </folder>
   </project>
   <configuration Name="Internal" hidden="Yes" />
