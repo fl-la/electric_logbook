@@ -56,6 +56,8 @@
 
 /* USER CODE BEGIN Includes */
 
+#include "stm32_adafruit_lcd.h"
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -76,19 +78,12 @@ void MX_FREERTOS_Init(void);
 
 /* USER CODE BEGIN 0 */
 
-void blinky(void)
+void alive_task(void)
 {
 	while(1)
 	{
 		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-		vTaskDelay(100);
-	}
-}
-
-void blinky2(void){
-	while(1){
-		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-		vTaskDelay(222);
+		vTaskDelay(200);
 	}
 }
 
@@ -117,6 +112,7 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
 
+
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -127,14 +123,14 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
+  //BSP_LCD_Init();
+
+  xTaskCreate(alive_task,"alive", 50, NULL, 3 , NULL);
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
   MX_FREERTOS_Init();
-  
-  xTaskCreate(blinky,"blinky", 50, NULL, 2 ,NULL);
-  xTaskCreate(blinky2,"blinky2", 50, NULL, 3 , NULL);
-
+ 
   /* Start scheduler */
   osKernelStart();
   
