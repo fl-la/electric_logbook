@@ -50,6 +50,7 @@
 void NMI_Handler(void);
 void HardFault_Handler(void);
 void SysTick_Handler(void);
+void DMA1_Ch4_7_DMA2_Ch3_5_IRQHandler(void);
 
 #ifdef __cplusplus
 }

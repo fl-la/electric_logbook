@@ -19,8 +19,8 @@
       project_directory=""
       project_type="Executable" />
     <folder Name="Internal Files">
-      <file file_name="$(StudioDir)/samples/Cortex_M_Startup.s" />
-      <file file_name="$(StudioDir)/samples/SEGGER_THUMB_Startup.s" />
+      <file file_name="Cortex_M_Startup.s" />
+      <file file_name="SEGGER_THUMB_Startup.s" />
     </folder>
     <configuration
       CMSIS_CORE="Yes"
@@ -46,6 +46,14 @@
         <file file_name="./../Src/usart.c" />
         <file file_name="./../Src/stm32f0xx_it.c" />
         <file file_name="./../Src/stm32f0xx_hal_msp.c" />
+        <folder Name="tests">
+          <file file_name="display_test.c" />
+          <file file_name="display_test.h" />
+        </folder>
+        <folder Name="glue">
+          <file file_name="lcd_glue.c" />
+        </folder>
+        <file file_name="../Src/dma.c" />
       </folder>
     </folder>
     <folder Name="Drivers">
