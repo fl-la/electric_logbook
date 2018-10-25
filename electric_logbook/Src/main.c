@@ -60,7 +60,7 @@
 #include "stm32_adafruit_lcd.h"
 #include "SEGGER_SYSVIEW.h"
 #include "SEGGER_RTT.h"
-
+#include "OS_glue.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -68,6 +68,8 @@
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
+
+TaskHandle_t allTasks[NUMBER_OF_TASKS];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -90,21 +92,17 @@ void alive_task(void)
 	}
 }
 
-void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
-{
-  HAL_GPIO_WritePin(SPI2_CS_LCD_GPIO_Port, SPI2_CS_LCD_Pin, GPIO_PIN_SET);
-}
 
 void test_task(void)
 {
-  static uint8_t a[5] = {1,2,3,4,5};
-  static uint8_t b[5] = {};
+	int i = 0;
+	char buf[20];
+	Delay(500);
   while(1)
   {
-    //HAL_SPI_TransmitReceive(&hspi2,&a, &b, 5, 10000);
-   HAL_GPIO_WritePin(SPI2_CS_LCD_GPIO_Port, SPI2_CS_LCD_Pin, GPIO_PIN_RESET);
-   HAL_SPI_Transmit_DMA(&hspi2, &a, 5);
-    vTaskDelay(500);
+		sprintf(buf, "i = %i", ++i);
+		BSP_LCD_DisplayStringAtLine(2, buf);
+		vTaskDelay(500);
   }
 }
 
@@ -146,18 +144,18 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   
-  BSP_LCD_Init();
   SEGGER_SYSVIEW_Conf();
-
   
-  //BSP_LCD_Init();
-
-  xTaskCreate(alive_task,"alive", 50, NULL, 3 , NULL);
-  xTaskCreate(test_task,"test", 50, NULL, 2 , NULL);
+	BSP_LCD_Init();
+    BSP_LCD_DisplayStringAtLine(3, "hallo welt");
+  
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
   MX_FREERTOS_Init();
+
+  xTaskCreate(alive_task,"alive", 50, NULL, 3 , NULL);
+  xTaskCreate(test_task,"test", 255, NULL, 2 , NULL);
  
   /* Start scheduler */
   osKernelStart();
@@ -195,8 +193,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL12;
-  RCC_OscInitStruct.PLL.PREDIV = RCC_PREDIV_DIV2;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL5;
+  RCC_OscInitStruct.PLL.PREDIV = RCC_PREDIV_DIV1;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);

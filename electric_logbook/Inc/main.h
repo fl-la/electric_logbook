@@ -67,10 +67,14 @@
 #define USART_RX_GPIO_Port GPIOA
 #define LD2_Pin GPIO_PIN_5
 #define LD2_GPIO_Port GPIOA
-#define SPI2_CS_LCD_Pin GPIO_PIN_4
-#define SPI2_CS_LCD_GPIO_Port GPIOC
+#define LCD_CS_Pin GPIO_PIN_4
+#define LCD_CS_GPIO_Port GPIOC
 #define SPI2_CS_SD_Pin GPIO_PIN_1
 #define SPI2_CS_SD_GPIO_Port GPIOB
+#define LCD_RESET_Pin GPIO_PIN_2
+#define LCD_RESET_GPIO_Port GPIOB
+#define LCD_DC_PIN_Pin GPIO_PIN_11
+#define LCD_DC_PIN_GPIO_Port GPIOB
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
@@ -84,6 +88,8 @@
 /* #define USE_FULL_ASSERT    1U */
 
 /* USER CODE BEGIN Private defines */
+
+#define NUMBER_OF_TASKS
 
 /* USER CODE END Private defines */
 

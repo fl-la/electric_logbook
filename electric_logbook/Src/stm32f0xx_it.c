@@ -86,6 +86,7 @@ void SysTick_Handler(void)
   /* USER CODE BEGIN SysTick_IRQn 0 */
   SEGGER_SYSVIEW_TickCnt++;
   /* USER CODE END SysTick_IRQn 0 */
+  HAL_IncTick();
   osSystickHandler();
   /* USER CODE BEGIN SysTick_IRQn 1 */
 

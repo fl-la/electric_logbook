@@ -175,7 +175,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
     hdma_spi2_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
     hdma_spi2_tx.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
     hdma_spi2_tx.Init.Mode = DMA_NORMAL;
-    hdma_spi2_tx.Init.Priority = DMA_PRIORITY_HIGH;
+    hdma_spi2_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
     if (HAL_DMA_Init(&hdma_spi2_tx) != HAL_OK)
     {
       _Error_Handler(__FILE__, __LINE__);

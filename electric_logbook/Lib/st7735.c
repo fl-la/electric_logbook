@@ -97,6 +97,7 @@ LCD_DrvTypeDef   st7735_drv =
   st7735_GetLcdPixelWidth,
   st7735_GetLcdPixelHeight,
   st7735_DrawBitmap,
+  0,
 };
 
 static uint16_t ArrayRGB[320] = {0};
@@ -319,6 +320,7 @@ void st7735_WritePixel(uint16_t Xpos, uint16_t Ypos, uint16_t RGBCode)
   */
 void st7735_WriteReg(uint8_t LCDReg, uint8_t LCDRegValue)
 {
+  //LCD_IO_WriteReg(LCDReg);
   LCD_IO_WriteReg(LCDReg);
   LCD_IO_WriteMultipleData(&LCDRegValue, 1);
 }
