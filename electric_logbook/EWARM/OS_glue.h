@@ -4,7 +4,7 @@
 #include "FreeRTOS.h"
 #include "stm32f0xx_hal.h"
 
-static inline Delay(const uint32_t ms)
+static inline void Delay(const uint32_t ms)
 {
 	if(xTaskGetCurrentTaskHandle() != NULL)
 		vTaskDelay(pdMS_TO_TICKS(ms));

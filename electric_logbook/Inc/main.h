@@ -89,8 +89,6 @@
 
 /* USER CODE BEGIN Private defines */
 
-#define NUMBER_OF_TASKS
-
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

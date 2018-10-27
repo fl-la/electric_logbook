@@ -105,6 +105,9 @@
       <file file_name="../Lib/stm32_adafruit_lcd.c" />
       <file file_name="../Lib/stm32_adafruit_sd.c" />
       <file file_name="../Lib/st7735.c" />
+      <file file_name="../Lib/mcp2515/mcp2515.c" />
+      <file file_name="../Lib/mcp2515/mcp2515.h" />
+      <file file_name="../Lib/mcp2515/mcp2515_registers.h" />
     </folder>
   </project>
   <configuration Name="Internal" hidden="Yes" />
